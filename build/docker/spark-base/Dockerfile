@@ -3,8 +3,6 @@ LABEL manteiner="Daniel Saad <dsaad68@gmail.com>"
 
 # -- Layer: Image Metadata
 
-ARG build_date
-
 LABEL org.label-schema.build-date=${build_date}
 LABEL org.label-schema.name="Big Data Lab - JupyterLab Image"
 LABEL org.label-schema.description="Base Spark Image "
