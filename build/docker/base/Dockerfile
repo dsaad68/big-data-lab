@@ -22,8 +22,7 @@ ARG shared_workspace=/opt/workspace
 
 # Installing Python
 
-RUN mkdir -p ${shared_workspace}/data && \
-    mkdir -p /usr/share/man/man1 && \
+RUN mkdir -p /usr/share/man/man1 && \
     apt-get update -y && \
     apt-get install -y apt-transport-https ca-certificates-java curl python3 r-base && \
     ln -s /usr/bin/python3 /usr/bin/python

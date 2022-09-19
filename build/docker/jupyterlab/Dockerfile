@@ -40,28 +40,28 @@ RUN pip3 install -r requirements.txt
 
 # -- Layer: Scala kernel for Spark
 
-RUN curl -Lo coursier https://git.io/coursier-cli && \
-    chmod +x coursier && \
-    ./coursier launch --fork almond --scala ${scala_version} -- --display-name "Scala ${scala_version}" --install && \
-    # Clean Up
-    rm -f coursier
+# RUN curl -Lo coursier https://git.io/coursier-cli && \
+#     chmod +x coursier && \
+#     ./coursier launch --fork almond --scala ${scala_version} -- --display-name "Scala ${scala_version}" --install && \
+#     # Clean Up
+#     rm -f coursier
 
-# # # -- Layer: R kernel for SparkR
+# # # # -- Layer: R kernel for SparkR
 
-RUN apt-get install -y r-base-dev && \
-    R -e "install.packages('IRkernel')" && \
-    R -e "IRkernel::installspec(displayname = 'R 3.5', user = FALSE)" && \
-    curl https://archive.apache.org/dist/spark/spark-${spark_version}/SparkR_${spark_version}.tar.gz -k -o sparkr.tar.gz && \
-    R CMD INSTALL sparkr.tar.gz && \
-    # Clean Up
-    rm -f sparkr.tar.gz
+# RUN apt-get install -y r-base-dev && \
+#     R -e "install.packages('IRkernel')" && \
+#     R -e "IRkernel::installspec(displayname = 'R 3.5', user = FALSE)" && \
+#     curl https://archive.apache.org/dist/spark/spark-${spark_version}/SparkR_${spark_version}.tar.gz -k -o sparkr.tar.gz && \
+#     R CMD INSTALL sparkr.tar.gz && \
+#     # Clean Up
+#     rm -f sparkr.tar.gz
 
 # -- Runtime
 
 EXPOSE 8888
 EXPOSE 4040
 
-ADD ./workspace /usr/local/examples 
+COPY ./workspace/ /opt/workspace/examples/
 
 WORKDIR ${SHARED_WORKSPACE}
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
