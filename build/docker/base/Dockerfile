@@ -13,6 +13,9 @@ LABEL org.label-schema.description="Base Image with Python, R and Scala"
 LABEL org.label-schema.url="https://github.com/dsaad89"
 LABEL org.label-schema.schema-version="1.0"
 
+# https://github.com/hadolint/hadolint/wiki/DL4006
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # -- Layer: Python + R + Scala 
 
 ARG shared_workspace=/opt/workspace
