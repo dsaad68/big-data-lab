@@ -9,9 +9,7 @@ LABEL org.label-schema.description="Image for JupyterLab with Python, R and Scal
 LABEL org.label-schema.url="https://github.com/dsaad89"
 LABEL org.label-schema.schema-version="1.0"
 
-# -- Layer: Notebooks and data
-
-#ADD ../workspace/ ${SHARED_WORKSPACE}/
+# -- Layer: Notebooks
 
 # -- Layer: JupyterLab + Python kernel for PySpark
 
@@ -62,6 +60,8 @@ RUN apt-get install -y r-base-dev && \
 
 EXPOSE 8888
 EXPOSE 4040
+
+ADD ./workspace /usr/local/examples 
 
 WORKDIR ${SHARED_WORKSPACE}
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
