@@ -11,6 +11,8 @@ LABEL org.label-schema.schema-version="1.0"
 
 # -- Layer: Notebooks
 
+# ADD workspace/ ${SHARED_WORKSPACE}/
+
 # -- Layer: JupyterLab + Python kernel for PySpark
 
 #ARG spark_version and scala_version
@@ -61,7 +63,7 @@ RUN apt-get install -y r-base-dev && \
 EXPOSE 8888
 EXPOSE 4040
 
-COPY /examples /opt/workspace/examples/
+#COPY /examples ${SHARED_WORKSPACE}/examples/
 
 WORKDIR ${SHARED_WORKSPACE}
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
