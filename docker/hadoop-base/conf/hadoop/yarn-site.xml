@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- http://hadoop.apache.org/docs/r3.1.2/hadoop-project-dist/hadoop-common/ClusterSetup.html -->
+<configuration>
+
+    <!-- Single hostname that can be set in place of setting all
+    yarn.resourcemanager*address resources. Results in default ports
+    for ResourceManager components: scheduler - 8030, resource-tracker - 8031,
+    resourcemanager - 8032, admin - 8033, webapp - 8088. -->
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>master</value>
+    </property>
+
+</configuration>

@@ -14,7 +14,7 @@ LABEL org.label-schema.schema-version="1.0"
 # -- Layer: JupyterLab + Python kernel for PySpark
 
 #ARG spark_version and scala_version
-ARG scala_version=2.13.1
+ARG scala_version=2.12.17
 ARG spark_version=3.3.0
 ARG hadoop_version=3
 
@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     # Clean Up
     rm -rf /var/lib/apt/lists/*
 
+# need to be fixed in the future
 COPY . .
 RUN pip3 install -r requirements.txt
 
@@ -61,7 +62,7 @@ RUN pip3 install -r requirements.txt
 EXPOSE 8888
 EXPOSE 4040
 
-COPY ./workspace/ /opt/workspace/examples/
+COPY /examples /opt/workspace/examples/
 
 WORKDIR ${SHARED_WORKSPACE}
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
