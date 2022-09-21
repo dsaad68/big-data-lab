@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 # need to be fixed in the future
-COPY . .
+COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 # -- Layer: Scala kernel for Spark
