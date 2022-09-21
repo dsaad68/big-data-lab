@@ -14,9 +14,8 @@ LABEL org.label-schema.schema-version="1.0"
 # -- Layer: JupyterLab + Python kernel for PySpark
 
 #ARG spark_version and scala_version
-ARG scala_version=2.12.17
-ARG spark_version=3.3.0
-ARG hadoop_version=3
+ARG scala_version=2.12.10
+ARG spark_vespark_versionrsion=3.3.0
 
 # -- Layer: Python kernel 
 
@@ -41,11 +40,11 @@ RUN pip3 install -r requirements.txt
 
 # -- Layer: Scala kernel for Spark
 
-# RUN curl -Lo coursier https://git.io/coursier-cli && \
-#     chmod +x coursier && \
-#     ./coursier launch --fork almond --scala ${scala_version} -- --display-name "Scala ${scala_version}" --install && \
-#     # Clean Up
-#     rm -f coursier
+RUN curl -Lo coursier https://git.io/coursier-cli && \
+    chmod +x coursier && \
+    ./coursier launch --fork almond --scala ${scala_version} -- --display-name "Scala ${scala_version}" --install && \
+    # Clean Up
+    rm -f coursier
 
 # # # # -- Layer: R kernel for SparkR
 

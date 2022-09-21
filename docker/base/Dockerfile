@@ -29,7 +29,7 @@ ARG shared_workspace=/opt/workspace
 
 RUN mkdir -p /usr/share/man/man1 && \
     apt-get update -y && \
-    apt-get install -y apt-transport-https ca-certificates-java curl python3 r-base coreutils procps findutils ncurses && \
+    apt-get install -y apt-transport-https ca-certificates-java curl python3 r-base coreutils procps findutils && \
     ln -s /usr/bin/python3 /usr/bin/python
 
 # Installing Scala
