@@ -17,7 +17,7 @@ LABEL org.label-schema.schema-version="1.0"
 
 #ARG spark_version and scala_version
 ARG scala_version=2.12.10
-ARG spark_vespark_versionrsion=3.3.0
+ARG spark_version=3.3.0
 
 # -- Layer: Python kernel 
 
