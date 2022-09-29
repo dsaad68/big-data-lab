@@ -44,16 +44,16 @@ services:
       - shared-workspace:/opt/workspace
     depends_on:
       - spark-master
-  postgres:
-    container_name: postgres
-    image: postgres:14.5-bullseye
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: adminadmin
-      PGDATA: /data/postgres
-    volumes:
-       - ./postgres-data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    restart: always
+  # postgres:
+  #   container_name: postgres
+  #   image: postgres:14.5-bullseye
+  #   environment:
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: adminadmin
+  #     PGDATA: /data/postgres
+  #   volumes:
+  #      - ./postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - 5432:5432
+  #   restart: always
 ...

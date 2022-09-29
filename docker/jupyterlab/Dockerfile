@@ -10,8 +10,8 @@ LABEL org.label-schema.url="https://github.com/dsaad89"
 LABEL org.label-schema.schema-version="1.0"
 
 # -- Layer: Notebooks
-
-# ADD workspace/ ${SHARED_WORKSPACE}/
+ 
+ADD examples/ ${SHARED_WORKSPACE}/examples/
 
 # -- Layer: JupyterLab + Python kernel for PySpark
 

@@ -1,4 +1,3 @@
-## ARG debian_bullseye_image_tag=18-jdk-slim-bullseye
 ARG debian_bullseye_image_tag=8-jre-slim-bullseye
 FROM openjdk:${debian_bullseye_image_tag}
 LABEL manteiner="Daniel Saad <dsaad68@gmail.com>"
@@ -8,7 +7,7 @@ LABEL manteiner="Daniel Saad <dsaad68@gmail.com>"
 ARG build_date
 
 LABEL org.label-schema.build-date=${build_date}
-LABEL org.label-schema.name="Big Data Lab - Cluster Base Image"
+LABEL org.label-schema.name="Spark Data Lab - Cluster Base Image"
 LABEL org.label-schema.description="Base Image with Python, R and Scala"
 LABEL org.label-schema.url="https://github.com/dsaad89"
 LABEL org.label-schema.schema-version="1.0"
@@ -25,11 +24,10 @@ ARG shared_workspace=/opt/workspace
 # coreutils: Spark launcher script relies on GNU implementation of `nice`
 # procps: Hadoop needs GNU `ps` utility
 # findutils: Spark needs GNU `find` to run jobs (weird but true)
-# ncurses: so that you can run `yarn top`
 
 RUN mkdir -p /usr/share/man/man1 && \
     apt-get update -y && \
-    apt-get install -y apt-transport-https ca-certificates-java curl python3 r-base coreutils procps findutils && \
+    apt-get install -y apt-transport-https ca-certificates-java curl python3 r-base coreutils procps findutils wget && \
     ln -s /usr/bin/python3 /usr/bin/python
 
 # Installing Scala
